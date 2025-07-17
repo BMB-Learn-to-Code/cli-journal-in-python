@@ -1,3 +1,5 @@
+from database import add_items, view_items
+
 # Create the menu variable with the prompt content (print the menu)
 # # The prompt should contemplate three options, create a new entry (1), list all entries (2), exit the app (3)
 menu = """Please select one of the following tasks
@@ -13,7 +15,9 @@ print(welcome)
 while (user_input := input(menu)) != "3":
    if user_input == "1":
        print("Adding...")
+       add_items()
    elif user_input == "2":
        print("Viewing...")
+       view_items()
    else:
        print("Invalid option please chose an option from 1 to 3")
