@@ -1,3 +1,4 @@
+from typing import List, Tuple
 import sqlite3
 import datetime
 
@@ -17,9 +18,8 @@ def add_items():
     with connection:
         connection.execute("INSERT INTO entries VALUES(?,?)", (new_story, new_date))
 
-def view_items():
+def view_items()-> List[Tuple[str, str]]:
     entries = []
     with connection:
         entries = connection.execute("SELECT * FROM entries").fetchall()
-    for entry in entries:
-        print(datetime.datetime.fromisoformat(entry[1]).strftime("%Y-%m-%d %H:%M:%S"), f" - {entry[0]}\n")
+    return entries

@@ -1,5 +1,5 @@
 from database import add_items, view_items, close_connection, create_db
-
+from datetime import datetime
 # Create the menu variable with the prompt content (print the menu)
 # # The prompt should contemplate three options, create a new entry (1), list all entries (2), exit the app (3)
 menu = """Please select one of the following tasks
@@ -21,7 +21,9 @@ while (user_input := input(menu)) != "3":
        add_items()
    elif user_input == "2":
        print("Viewing...")
-       view_items()
+       entries = view_items()
+       for entry in entries:
+        print(datetime.fromisoformat(entry[1]).strftime("%Y-%m-%d %H:%M:%S"), f"- {entry[0]}\n")
    else:
        print("Invalid option please chose an option from 1 to 3")
 
