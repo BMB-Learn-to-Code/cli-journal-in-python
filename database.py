@@ -22,4 +22,4 @@ def view_items():
     with connection:
         entries = connection.execute("SELECT * FROM entries").fetchall()
     for entry in entries:
-        print(f"{entry[1]} - {entry[0]}\n")
+        print(datetime.datetime.fromisoformat(entry[1]).strftime("%Y-%m-%d %H:%M:%S"), f" - {entry[0]}\n")
